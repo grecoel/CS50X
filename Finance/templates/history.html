@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transaction Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction['symbol'] }}</td>
+                <td>{{ transaction['shares'] }}</td>
+                <td>${{ "%.2f" | format(transaction['price']) }}</td>
+                <td>{{ transaction['transacted'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
